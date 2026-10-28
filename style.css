@@ -1,0 +1,459 @@
+:root {
+  --bg: #0b0a0c;
+  --bg-soft: #141215;
+  --card: #18161a;
+  --card-border: rgba(214, 178, 105, 0.22);
+  --gold: #d6b269;
+  --gold-soft: #b6922f;
+  --gold-bright: #f0d48a;
+  --cream: #f6efe2;
+  --ink: #f5f1ea;
+  --muted: #a99f93;
+  --danger: #e6786b;
+  --success: #7fbf8f;
+  font-family: "Manrope", "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(ellipse at top, #1a171b 0%, #0b0a0c 55%, #080708 100%);
+  color: var(--ink);
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px 60px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  margin: 0;
+  font-weight: 700;
+}
+
+a {
+  color: var(--gold);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 560px;
+}
+
+.brand-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.brand-mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: 1.4px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+  background: rgba(214, 178, 105, 0.07);
+}
+
+.brand-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  color: var(--gold-soft);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.brand-title {
+  font-size: 30px;
+  line-height: 1.2;
+  color: var(--cream);
+}
+
+.brand-title .accent {
+  color: var(--gold-bright);
+}
+
+.brand-sub {
+  margin-top: 8px;
+  font-size: 13.5px;
+  color: var(--muted);
+  max-width: 420px;
+  line-height: 1.55;
+}
+
+.steps-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 18px 0 8px;
+}
+
+.steps-indicator span {
+  width: 26px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(214, 178, 105, 0.22);
+  transition: background 0.25s ease;
+}
+
+.steps-indicator span.is-active,
+.steps-indicator span.is-done {
+  background: var(--gold);
+}
+
+.card {
+  background: linear-gradient(180deg, var(--card), #121014);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.step {
+  display: none;
+}
+
+.step.is-active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10.5px;
+  color: var(--gold-soft);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.step-title {
+  font-size: 21px;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.step-help {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.field {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.3px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--ink);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #6f675f;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--gold);
+  background: rgba(214, 178, 105, 0.06);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.course-option {
+  position: relative;
+}
+
+.course-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.course-option label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.course-option label .course-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.course-option label .course-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.course-option input:checked + label {
+  border-color: var(--gold);
+  background: rgba(214, 178, 105, 0.08);
+}
+
+.course-option input:checked + label .course-name {
+  color: var(--gold-bright);
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn {
+  flex: 1;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 18px;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  font-family: inherit;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-soft));
+  color: #241c08;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--muted);
+  flex: 0 0 auto;
+  padding: 14px 20px;
+}
+
+.error-text {
+  color: var(--danger);
+  font-size: 12.5px;
+  margin-top: -8px;
+  margin-bottom: 14px;
+  min-height: 1px;
+}
+
+.micro-note {
+  font-size: 11.5px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.evaluating-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: 2px solid rgba(214, 178, 105, 0.25);
+  border-top-color: var(--gold);
+  margin: 10px auto 22px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.center-text {
+  text-align: center;
+}
+
+.pill {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.pill-success {
+  background: rgba(127, 191, 143, 0.15);
+  color: var(--success);
+}
+
+.pill-pending {
+  background: rgba(214, 178, 105, 0.15);
+  color: var(--gold);
+}
+
+/* ---- Pase / vale ---- */
+.pass-card {
+  border: 1.4px solid var(--gold);
+  border-radius: 20px;
+  padding: 26px 22px;
+  background: linear-gradient(165deg, #1c1811, #110f12 60%);
+  position: relative;
+  overflow: hidden;
+}
+
+.pass-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(214, 178, 105, 0.3);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+.pass-kicker {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 10.5px;
+  color: var(--gold-soft);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.pass-title {
+  text-align: center;
+  font-size: 26px;
+  color: var(--cream);
+  margin-bottom: 18px;
+}
+
+.pass-title .accent {
+  color: var(--gold-bright);
+}
+
+.pass-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(214, 178, 105, 0.22);
+  font-size: 13.5px;
+}
+
+.pass-row:last-of-type {
+  border-bottom: none;
+}
+
+.pass-row .label {
+  color: var(--muted);
+}
+
+.pass-row .value {
+  color: var(--cream);
+  font-weight: 700;
+  text-align: right;
+}
+
+.pass-amounts {
+  margin-top: 18px;
+  background: rgba(214, 178, 105, 0.08);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.pass-amounts .amount-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  padding: 5px 0;
+}
+
+.pass-amounts .amount-row .value {
+  color: var(--gold-bright);
+  font-weight: 700;
+}
+
+.pass-footer-note {
+  margin-top: 18px;
+  font-size: 11.5px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media print {
+  body {
+    background: #0b0a0c !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

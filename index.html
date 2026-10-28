@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Aplica a la Beca Venezia | Instituto de Belleza Venezia</title>
+    <meta
+      name="description"
+      content="Aplica a la Beca Venezia: cuéntanos de ti y descubre si puedes acceder a la beca para estudiar en Instituto de Belleza Venezia."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=1" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="brand-header">
+        <div class="brand-mark">V</div>
+        <div class="brand-eyebrow">Instituto de Belleza Venezia</div>
+        <h1 class="brand-title">Aplica a la <span class="accent">Beca Venezia</span></h1>
+        <p class="brand-sub">
+          Cuéntanos un poco de ti. Evaluamos tu solicitud y te contactamos por WhatsApp para
+          confirmarte si puedes acceder a la beca.
+        </p>
+      </div>
+
+      <div class="steps-indicator" id="stepsIndicator">
+        <span data-step="1"></span>
+        <span data-step="2"></span>
+        <span data-step="3"></span>
+        <span data-step="4"></span>
+      </div>
+
+      <div class="card">
+        <form id="becaForm" novalidate>
+          <!-- Paso 1: curso -->
+          <section class="step is-active" data-step="1">
+            <p class="step-eyebrow">Paso 1 de 4</p>
+            <h2 class="step-title">¿Qué quieres estudiar?</h2>
+            <p class="step-help">Elige el curso al que te gustaría aplicar la beca.</p>
+
+            <div class="course-grid">
+              <div class="course-option">
+                <input type="radio" name="curso" id="cursoUnas" value="Uñas" required />
+                <label for="cursoUnas">
+                  <span class="course-name">Uñas</span>
+                  <span class="course-meta">Máster de Uñas · 5 meses</span>
+                </label>
+              </div>
+              <div class="course-option">
+                <input type="radio" name="curso" id="cursoBarberia" value="Barbería" />
+                <label for="cursoBarberia">
+                  <span class="course-name">Barbería</span>
+                  <span class="course-meta">6 meses</span>
+                </label>
+              </div>
+              <div class="course-option">
+                <input type="radio" name="curso" id="cursoPestanas" value="Pestañas" />
+                <label for="cursoPestanas">
+                  <span class="course-name">Diseño de Ceja y Lashista</span>
+                  <span class="course-meta">Pestañas · 5 meses</span>
+                </label>
+              </div>
+            </div>
+            <p class="error-text" id="errorStep1"></p>
+
+            <div class="btn-row">
+              <button type="button" class="btn btn-primary" data-next>Continuar</button>
+            </div>
+          </section>
+
+          <!-- Paso 2: datos personales -->
+          <section class="step" data-step="2">
+            <p class="step-eyebrow">Paso 2 de 4</p>
+            <h2 class="step-title">Tus datos</h2>
+            <p class="step-help">Necesitamos saber quién eres para evaluar tu solicitud.</p>
+
+            <div class="field">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej. María Fernanda López" required />
+            </div>
+            <div class="field">
+              <label for="edad">Edad</label>
+              <input type="number" id="edad" name="edad" min="15" max="99" placeholder="Ej. 22" required />
+            </div>
+            <p class="error-text" id="errorStep2"></p>
+
+            <div class="btn-row">
+              <button type="button" class="btn btn-ghost" data-prev>Atrás</button>
+              <button type="button" class="btn btn-primary" data-next>Continuar</button>
+            </div>
+          </section>
+
+          <!-- Paso 3: situación -->
+          <section class="step" data-step="3">
+            <p class="step-eyebrow">Paso 3 de 4</p>
+            <h2 class="step-title">Tu situación actual</h2>
+            <p class="step-help">
+              Esto nos ayuda a entender tu situación y evaluar tu solicitud de apoyo.
+            </p>
+
+            <div class="field">
+              <label for="ocupacion">¿A qué te dedicas actualmente?</label>
+              <input
+                type="text"
+                id="ocupacion"
+                name="ocupacion"
+                placeholder="Ej. Estudiante, trabajo en..., ama de casa"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="dependientes">¿Cuántas personas dependen económicamente de ti?</label>
+              <input
+                type="number"
+                id="dependientes"
+                name="dependientes"
+                min="0"
+                max="20"
+                placeholder="Ej. 0, 1, 2..."
+                required
+              />
+            </div>
+            <p class="error-text" id="errorStep3"></p>
+
+            <div class="btn-row">
+              <button type="button" class="btn btn-ghost" data-prev>Atrás</button>
+              <button type="button" class="btn btn-primary" data-next>Continuar</button>
+            </div>
+          </section>
+
+          <!-- Paso 4: whatsapp -->
+          <section class="step" data-step="4">
+            <p class="step-eyebrow">Paso 4 de 4 · Último paso</p>
+            <h2 class="step-title">¿A qué WhatsApp te confirmamos?</h2>
+            <p class="step-help">
+              En cuanto evaluemos tu solicitud, te escribimos por aquí para confirmarte tu beca.
+            </p>
+
+            <div class="field">
+              <label for="whatsapp">Número de WhatsApp</label>
+              <input
+                type="tel"
+                id="whatsapp"
+                name="whatsapp"
+                inputmode="numeric"
+                placeholder="Ej. 2461234567"
+                required
+              />
+            </div>
+            <p class="error-text" id="errorStep4"></p>
+
+            <div class="btn-row">
+              <button type="button" class="btn btn-ghost" data-prev>Atrás</button>
+              <button type="submit" class="btn btn-primary" id="submitBtn">Enviar mi solicitud</button>
+            </div>
+          </section>
+        </form>
+
+        <!-- Pantalla de evaluación / confirmación -->
+        <section class="step" data-step="evaluating">
+          <div class="center-text">
+            <div class="evaluating-icon"></div>
+            <h2 class="step-title">Tu solicitud está siendo evaluada</h2>
+            <p class="step-help">
+              Gracias por aplicar a la Beca Venezia. Estamos revisando tu información. En los
+              próximos minutos te contactamos por WhatsApp con el resultado de tu solicitud.
+            </p>
+            <p class="micro-note">
+              Puedes cerrar esta ventana. Te escribiremos directo a tu WhatsApp.
+            </p>
+          </div>
+        </section>
+
+        <section class="step" data-step="error">
+          <div class="center-text">
+            <h2 class="step-title">No pudimos enviar tu solicitud</h2>
+            <p class="step-help" id="submitErrorText">
+              Ocurrió un problema al guardar tu información. Por favor intenta de nuevo o
+              escríbenos directo por WhatsApp.
+            </p>
+            <div class="btn-row">
+              <button type="button" class="btn btn-primary" data-retry>Intentar de nuevo</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <p class="micro-note">
+        Instituto de Belleza Venezia · Tlaxcala &middot;
+        <a href="https://wa.me/522463956807" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js?v=1"></script>
+    <script src="prospect-record.js?v=1"></script>
+    <script src="app.js?v=1"></script>
+  </body>
+</html>

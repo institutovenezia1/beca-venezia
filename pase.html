@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Tu pase de Beca Venezia | Instituto de Belleza Venezia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=1" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="brand-header">
+        <div class="brand-mark">V</div>
+        <div class="brand-eyebrow">Instituto de Belleza Venezia</div>
+        <h1 class="brand-title" id="pageTitle">Tu pase de beca</h1>
+      </div>
+
+      <div class="card no-print" id="loadingState">
+        <div class="center-text">
+          <div class="evaluating-icon"></div>
+          <h2 class="step-title">Buscando tu solicitud...</h2>
+        </div>
+      </div>
+
+      <div class="card no-print" id="pendingState" hidden>
+        <div class="center-text">
+          <span class="pill pill-pending">Solicitud en evaluación</span>
+          <h2 class="step-title" style="margin-top: 14px">Tu beca todavía se está confirmando</h2>
+          <p class="step-help">
+            En cuanto una asesora confirme tu solicitud, te escribiremos por WhatsApp con el
+            resultado y este mismo link se activará con tu pase.
+          </p>
+        </div>
+      </div>
+
+      <div class="card no-print" id="notFoundState" hidden>
+        <div class="center-text">
+          <h2 class="step-title">No encontramos esta solicitud</h2>
+          <p class="step-help">
+            Verifica que el link sea correcto o escríbenos por WhatsApp para ayudarte.
+          </p>
+        </div>
+      </div>
+
+      <div id="passState" hidden>
+        <div class="pass-card">
+          <p class="pass-kicker">Pase · Beca Venezia</p>
+          <h2 class="pass-title">¡Felicidades, <span class="accent" id="passNombre">—</span>!</h2>
+
+          <div class="pass-row">
+            <span class="label">Curso</span>
+            <span class="value" id="passCurso">—</span>
+          </div>
+          <div class="pass-row">
+            <span class="label">Asesora que te atendió</span>
+            <span class="value" id="passAsesora">—</span>
+          </div>
+          <div class="pass-row">
+            <span class="label">Fecha de solicitud</span>
+            <span class="value" id="passFecha">—</span>
+          </div>
+
+          <div class="pass-amounts">
+            <div class="amount-row">
+              <span class="label">Inscripción con beca</span>
+              <span class="value" id="passInscripcion">$999.99</span>
+            </div>
+            <div class="amount-row">
+              <span class="label">Mensualidad con beca</span>
+              <span class="value" id="passMensualidad">$1,599.99</span>
+            </div>
+            <div class="amount-row">
+              <span class="label">Apoyo de material</span>
+              <span class="value" id="passMaterial">80% del material</span>
+            </div>
+          </div>
+
+          <p class="pass-footer-note">
+            Este pase es personal e intransferible. Preséntalo (impreso o en tu celular) en
+            Instituto de Belleza Venezia, Tlaxcala, para validar tu beca y completar tu
+            inscripción.
+          </p>
+        </div>
+
+        <div class="btn-row no-print" style="margin-top: 18px">
+          <button type="button" class="btn btn-primary" id="downloadBtn">Descargar mi pase</button>
+        </div>
+      </div>
+
+      <p class="micro-note no-print">
+        Instituto de Belleza Venezia · Tlaxcala &middot;
+        <a href="https://wa.me/522463956807" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js?v=1"></script>
+    <script src="prospect-record.js?v=1"></script>
+    <script src="pase.js?v=1"></script>
+  </body>
+</html>
