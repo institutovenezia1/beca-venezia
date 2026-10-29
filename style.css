@@ -321,16 +321,15 @@ a {
   width: 64px;
   height: 64px;
   border-radius: 999px;
-  border: 2px solid rgba(214, 178, 105, 0.25);
-  border-top-color: var(--gold);
+  border: 2px solid var(--gold);
   margin: 10px auto 22px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--gold);
+  background: rgba(214, 178, 105, 0.1);
 }
 
 .center-text {

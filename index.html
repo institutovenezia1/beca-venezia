@@ -161,17 +161,21 @@
           </section>
         </form>
 
-        <!-- Pantalla de evaluación / confirmación -->
+        <!-- Pantalla de confirmación de envío (NO es un loader: la solicitud -->
+        <!-- ya quedó enviada, no hay nada más cargando en esta pantalla; se -->
+        <!-- usa un ícono estático de check, no un spinner, para que quede -->
+        <!-- claro que puede cerrar la ventana sin perder nada). -->
         <section class="step" data-step="evaluating">
           <div class="center-text">
-            <div class="evaluating-icon"></div>
-            <h2 class="step-title">Tu solicitud está siendo evaluada</h2>
+            <div class="evaluating-icon">✓</div>
+            <h2 class="step-title">¡Tu solicitud ha sido enviada!</h2>
             <p class="step-help">
-              Gracias por aplicar a la Beca Venezia. Estamos revisando tu información. En los
-              próximos minutos te contactamos por WhatsApp con el resultado de tu solicitud.
+              Gracias por aplicar a la Beca Venezia. Ya recibimos tu información. En los
+              próximos minutos te contactamos por WhatsApp para confirmarte tu lugar.
             </p>
             <p class="micro-note">
-              Puedes cerrar esta ventana. Te escribiremos directo a tu WhatsApp.
+              Ya puedes cerrar esta ventana — no necesitas esperar aquí. Te escribiremos
+              directo a tu WhatsApp.
             </p>
           </div>
         </section>
