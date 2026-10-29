@@ -212,6 +212,49 @@ a {
   background: rgba(214, 178, 105, 0.06);
 }
 
+.field-label-standalone {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.3px;
+}
+
+.toggle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.toggle-option {
+  position: relative;
+}
+
+.toggle-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle-option label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.toggle-option input:checked + label {
+  border-color: var(--gold);
+  background: rgba(214, 178, 105, 0.08);
+  color: var(--gold-bright);
+}
+
 .course-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -436,6 +479,29 @@ a {
 .pass-amounts .amount-row .value {
   color: var(--gold-bright);
   font-weight: 700;
+}
+
+.pass-validity {
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+  margin: 0 auto 18px;
+  max-width: 420px;
+  line-height: 1.4;
+}
+
+.pass-validity-ok {
+  background: rgba(214, 178, 105, 0.15);
+  color: var(--gold-bright);
+  border: 1px solid rgba(214, 178, 105, 0.35);
+}
+
+.pass-validity-expired {
+  background: rgba(230, 120, 107, 0.15);
+  color: var(--danger);
+  border: 1px solid rgba(230, 120, 107, 0.35);
 }
 
 .pass-footer-note {

@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=1" />
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <div class="wrap">
@@ -102,6 +102,31 @@
             <p class="step-help">
               Esto nos ayuda a entender tu situación y evaluar tu solicitud de apoyo.
             </p>
+
+            <div class="field">
+              <label for="asesorAtendio">¿Alguna asesora de Instituto Venezia ya te atendió o te platicó de la beca?</label>
+              <select id="asesorAtendio" name="asesorAtendio" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Mari Flores | Coordinadora del IBV">Mari Flores</option>
+                <option value="Ismael Capir | CEO">Ismael Capir</option>
+                <option value="Monserrat Hernandez | Asesora">Monserrat Hernandez</option>
+                <option value="No lo sé / nadie en particular">No lo sé / nadie en particular</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <span class="field-label-standalone">¿Recibes apoyo del gobierno?</span>
+              <div class="toggle-grid">
+                <div class="toggle-option">
+                  <input type="radio" name="apoyoGobierno" id="apoyoGobiernoSi" value="Sí" required />
+                  <label for="apoyoGobiernoSi">Sí</label>
+                </div>
+                <div class="toggle-option">
+                  <input type="radio" name="apoyoGobierno" id="apoyoGobiernoNo" value="No" />
+                  <label for="apoyoGobiernoNo">No</label>
+                </div>
+              </div>
+            </div>
 
             <div class="field">
               <label for="ocupacion">¿A qué te dedicas actualmente?</label>
@@ -202,7 +227,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js?v=1"></script>
-    <script src="prospect-record.js?v=1"></script>
-    <script src="app.js?v=1"></script>
+    <script src="prospect-record.js?v=2"></script>
+    <script src="app.js?v=2"></script>
   </body>
 </html>

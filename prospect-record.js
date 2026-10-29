@@ -77,6 +77,12 @@
     const now = new Date().toISOString();
     const segments = [
       "Aplicación de Beca Venezia (formulario en línea).",
+      // Esto es lo que la SOLICITANTE dice en el formulario sobre quién ya
+      // la atendió -- es solo informativo para que la asesora/CEO sepa qué
+      // nombre poner en "Asesora asignada" dentro del CRM; no se asigna
+      // automáticamente (petición del CEO, 29/oct/2026).
+      fields.asesorAtendio ? `Asesora que te atendió (según la solicitante): ${encodeAdvisorValue(fields.asesorAtendio)}` : "",
+      fields.apoyoGobierno ? `Recibe apoyo del gobierno: ${fields.apoyoGobierno}` : "",
       fields.ocupacion ? `Ocupación: ${fields.ocupacion}` : "",
       fields.edad ? `Edad: ${fields.edad}` : "",
       fields.dependientes ? `Personas que dependen económicamente: ${fields.dependientes}` : "",

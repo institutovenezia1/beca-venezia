@@ -73,6 +73,16 @@
     }
 
     if (stepNumber === 3) {
+      var asesorAtendio = form.asesorAtendio.value.trim();
+      if (!asesorAtendio) {
+        setError(3, "Selecciona una opción sobre quién te atendió.");
+        return false;
+      }
+      var apoyoGobiernoChecked = form.querySelector('input[name="apoyoGobierno"]:checked');
+      if (!apoyoGobiernoChecked) {
+        setError(3, "Indica si recibes apoyo del gobierno.");
+        return false;
+      }
       var ocupacion = form.ocupacion.value.trim();
       var dependientes = form.dependientes.value.trim();
       if (ocupacion.length < 2) {
@@ -121,10 +131,13 @@
 
   function collectFields() {
     var cursoChecked = form.querySelector('input[name="curso"]:checked');
+    var apoyoGobiernoChecked = form.querySelector('input[name="apoyoGobierno"]:checked');
     return {
       curso: cursoChecked ? cursoChecked.value : "",
       nombre: form.nombre.value.trim(),
       edad: form.edad.value.trim(),
+      asesorAtendio: form.asesorAtendio.value.trim(),
+      apoyoGobierno: apoyoGobiernoChecked ? apoyoGobiernoChecked.value : "",
       ocupacion: form.ocupacion.value.trim(),
       dependientes: form.dependientes.value.trim(),
       whatsapp: form.whatsapp.value.trim(),
