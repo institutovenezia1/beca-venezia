@@ -74,14 +74,36 @@
     return rounded === 1 ? "1 hora" : rounded + " horas";
   }
 
+  // En el pase se muestra, de preferencia, lo que la SOLICITANTE dijo en el
+  // formulario sobre quién la atendió ("Asesora que te atendió (según la
+  // solicitante)") -- petición explícita del CEO, 29/oct/2026: el pase debe
+  // reflejar eso directo, sin esperar a que una asesora lo asigne a mano en
+  // el CRM. Si la solicitante contestó "No lo sé / nadie en particular" (o
+  // no contestó -- solicitudes de antes de esta pregunta), se usa lo que la
+  // asesora sí haya asignado manualmente en el CRM ("Asesora asignada"), y
+  // si tampoco hay eso, el nombre genérico del instituto.
+  function resolveAsesoraLabel(notes) {
+    var Prospect = window.BecaVeneziaProspect;
+    var declarada = Prospect.decodeAdvisorValue(
+      Prospect.extractMetadata(notes, "Asesora que te atendió (según la solicitante)")
+    );
+    if (declarada && declarada.indexOf("No lo sé") !== 0) {
+      return declarada;
+    }
+    var asignada = Prospect.decodeAdvisorValue(Prospect.extractMetadata(notes, "Asesora asignada"));
+    if (asignada) {
+      return asignada;
+    }
+    return "Instituto Venezia";
+  }
+
   function renderPass(record) {
     var Prospect = window.BecaVeneziaProspect;
     var notes = record.notes || "";
-    var asesora = Prospect.decodeAdvisorValue(Prospect.extractMetadata(notes, "Asesora asignada"));
 
     var nombre = record.full_name || "—";
     var curso = record.course_interest || "—";
-    var asesoraLabel = asesora || "Instituto Venezia";
+    var asesoraLabel = resolveAsesoraLabel(notes);
     var fecha = formatDate(record.created_at);
     var validity = getValidityInfo(record);
 
