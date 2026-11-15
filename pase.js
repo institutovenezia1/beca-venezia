@@ -43,14 +43,16 @@
   // consultar Supabase.
   var currentPassData = null;
 
-  // El pase es válido solo por 24 horas a partir de la confirmación real
-  // (petición del CEO, 29/oct/2026): que no se presenten semanas o meses
+  // El pase es válido solo por 48 horas a partir de la confirmación real
+  // (petición del CEO, 29/oct/2026; ampliado de 24 a 48 horas el 14/nov/2026): que no se presenten semanas o meses
   // después esperando que la beca siga en pie. El timestamp "Confirmada el"
   // lo escribe markBecaConfirmationSent() en Venezia One en el momento
   // exacto de la confirmación (y se borra si se reabre/reintenta). Si el
   // registro no tiene ese timestamp (pases confirmados antes de este
   // cambio), no se muestra ningún aviso de vigencia, para no inventar una
   // fecha que no existe.
+  var PASS_VALIDITY_HOURS = 48;
+
   function getValidityInfo(record) {
     var Prospect = window.BecaVeneziaProspect;
     var confirmadoEl = Prospect.extractMetadata(record.notes || "", "Confirmada el");
@@ -62,7 +64,7 @@
       return null;
     }
     var hoursElapsed = (Date.now() - confirmedDate.getTime()) / 3600000;
-    var hoursLeft = 24 - hoursElapsed;
+    var hoursLeft = PASS_VALIDITY_HOURS - hoursElapsed;
     return {
       expired: hoursLeft <= 0,
       hoursLeft: hoursLeft,
@@ -121,12 +123,12 @@
         validityEl.hidden = false;
         validityEl.className = "pass-validity pass-validity-expired";
         validityEl.textContent =
-          "Este pase ya venció (era válido por 24 horas). Escríbenos por WhatsApp para confirmar si tu lugar sigue disponible.";
+          "Este pase ya venció (era válido por 48 horas). Escríbenos por WhatsApp para confirmar si tu lugar sigue disponible.";
       } else {
         validityEl.hidden = false;
         validityEl.className = "pass-validity pass-validity-ok";
         validityEl.textContent =
-          "Válido por 24 horas desde tu confirmación — te quedan " + formatHoursLabel(validity.hoursLeft) + ".";
+          "Válido por 48 horas desde tu confirmación — te quedan " + formatHoursLabel(validity.hoursLeft) + ".";
       }
     }
 
@@ -135,8 +137,8 @@
       curso: curso,
       asesora: asesoraLabel,
       fecha: fecha,
-      inscripcion: "$999.99",
-      mensualidad: "$1,599.99",
+      inscripcion: "$499.99",
+      mensualidad: "$1,499.99",
       material: "80% del material",
       validity: validity,
     };
@@ -218,12 +220,12 @@
 
     // Texto de vigencia (petición del CEO, 29/oct/2026): la imagen
     // descargada es una foto fija, así que aquí va el texto estático de
-    // "válido por 24 horas", no un contador en vivo como en la página.
+    // "válido por 48 horas", no un contador en vivo como en la página.
     var validityText = "";
     if (data.validity) {
       validityText = data.validity.expired
-        ? "Este pase ya venció (vigencia de 24 horas). Contáctanos por WhatsApp para confirmar tu lugar."
-        : "Válido por 24 horas a partir de tu confirmación.";
+        ? "Este pase ya venció (vigencia de 48 horas). Contáctanos por WhatsApp para confirmar tu lugar."
+        : "Válido por 48 horas a partir de tu confirmación.";
     }
 
     // El canvas se crea una vez, con una altura provisional, solo para medir
