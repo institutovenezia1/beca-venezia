@@ -137,8 +137,8 @@
       curso: curso,
       asesora: asesoraLabel,
       fecha: fecha,
-      inscripcion: "$499.99",
-      mensualidad: "$1,499.99",
+      inscripcion: "$1,149.99",
+      mensualidad: "$1,599.99",
       material: "80% del material",
       validity: validity,
     };
