@@ -1,0 +1,362 @@
+/* Diseño premium del pase de Beca Venezia (petición del CEO, 18/nov/2026):
+   que al abrirlo se sienta un pase de lujo -- negro profundo, dorado
+   metálico, tipografía con serifa y detalles de joyería. Todo va bajo
+   body.pase-luxe para NO tocar el formulario (index.html), que comparte
+   style.css. */
+
+body.pase-luxe {
+  --lx-black: #070707;
+  --lx-panel: #0e0d0c;
+  --lx-ivory: #f6efe1;
+  --lx-champagne: #c9b896;
+  --lx-muted: #8f8573;
+  --lx-line: rgba(212, 175, 106, 0.38);
+  --lx-gold: linear-gradient(
+    120deg,
+    #8a6a2f 0%,
+    #d4af6a 20%,
+    #f7e7b4 42%,
+    #c9a05a 60%,
+    #f3dc9c 78%,
+    #9c7a3c 100%
+  );
+  background: radial-gradient(ellipse at 50% 0%, #241d13 0%, #0c0a08 45%, #050505 100%);
+  background-attachment: fixed;
+}
+
+/* ---- Encabezado ---- */
+body.pase-luxe .brand-header {
+  margin-bottom: 26px;
+}
+
+.pase-luxe .lx-crown {
+  width: 58px;
+  height: 36px;
+  filter: drop-shadow(0 2px 10px rgba(247, 231, 180, 0.25));
+}
+
+.pase-luxe .lx-brand {
+  margin-top: 8px;
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 6px;
+  background: var(--lx-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pase-luxe .lx-brand-sub {
+  margin-top: 2px;
+  font-size: 10.5px;
+  letter-spacing: 4.5px;
+  text-transform: uppercase;
+  color: var(--lx-champagne);
+  font-weight: 600;
+}
+
+.pase-luxe .lx-page-title {
+  margin: 12px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--lx-muted);
+}
+
+/* ---- Tarjetas de estado (cargando / pendiente / no encontrado) ---- */
+body.pase-luxe .card {
+  background: var(--lx-panel);
+  border: 1px solid var(--lx-line);
+}
+
+/* ---- Pase ---- */
+.pase-luxe .lx-pass {
+  position: relative;
+  padding: 2px;
+  border-radius: 22px;
+  background: var(--lx-gold);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.6),
+    0 18px 50px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(212, 175, 106, 0.12);
+}
+
+.pase-luxe .lx-pass-inner {
+  position: relative;
+  border-radius: 20px;
+  padding: 30px 22px 22px;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(247, 231, 180, 0.1), transparent 55%),
+    linear-gradient(170deg, #141210 0%, #0a0909 55%, #060606 100%);
+  overflow: hidden;
+}
+
+.pase-luxe .lx-pass-inner::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid var(--lx-line);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+/* Diamantes en las esquinas del marco interior. */
+.pase-luxe .lx-corner {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: var(--lx-gold);
+  transform: rotate(45deg);
+}
+.pase-luxe .lx-tl { top: 5px; left: 5px; }
+.pase-luxe .lx-tr { top: 5px; right: 5px; }
+.pase-luxe .lx-bl { bottom: 5px; left: 5px; }
+.pase-luxe .lx-br { bottom: 5px; right: 5px; }
+
+.pase-luxe .lx-kicker {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--lx-champagne);
+}
+
+.pase-luxe .lx-title {
+  margin: 4px 0 0;
+  text-align: center;
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 31px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: var(--lx-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pase-luxe .lx-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px auto 16px;
+  max-width: 240px;
+}
+.pase-luxe .lx-divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af6a, transparent);
+}
+.pase-luxe .lx-divider i {
+  width: 8px;
+  height: 8px;
+  background: var(--lx-gold);
+  transform: rotate(45deg);
+}
+
+.pase-luxe .lx-congrats {
+  margin: 0;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--lx-ivory);
+}
+
+.pase-luxe .lx-name {
+  margin: 2px 0 16px;
+  text-align: center;
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  background: var(--lx-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.pase-luxe .pass-validity {
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  margin-bottom: 18px;
+}
+body.pase-luxe .pass-validity-ok {
+  background: rgba(212, 175, 106, 0.08);
+  color: var(--lx-champagne);
+  border: 1px solid var(--lx-line);
+}
+
+/* Datos de la alumna */
+.pase-luxe .lx-details {
+  border-top: 1px solid var(--lx-line);
+  border-bottom: 1px solid var(--lx-line);
+  padding: 4px 0;
+}
+
+.pase-luxe .lx-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  padding: 9px 2px;
+}
+.pase-luxe .lx-row + .lx-row {
+  border-top: 1px dotted rgba(212, 175, 106, 0.18);
+}
+.pase-luxe .lx-row .label {
+  flex-shrink: 0;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lx-muted);
+  font-weight: 700;
+}
+.pase-luxe .lx-row .value {
+  text-align: right;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--lx-ivory);
+}
+
+/* Montos */
+.pase-luxe .lx-amounts {
+  margin-top: 18px;
+  padding: 14px 16px 10px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #030303, #0d0b09);
+  border: 1px solid var(--lx-line);
+  box-shadow: inset 0 1px 0 rgba(247, 231, 180, 0.06);
+}
+
+.pase-luxe .lx-amounts-note {
+  margin: 0 0 6px;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--lx-muted);
+}
+
+.pase-luxe .lx-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+}
+.pase-luxe .lx-amount .label {
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--lx-champagne);
+  font-weight: 700;
+}
+.pase-luxe .lx-amount .value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.pase-luxe .lx-old {
+  font-size: 12px;
+  font-weight: 600;
+  color: #7c7770;
+  text-decoration-color: #b04b4b;
+  text-decoration-thickness: 1.5px;
+}
+
+.pase-luxe .lx-price {
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1;
+  background: var(--lx-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pase-luxe .lx-price-sm {
+  font-size: 16px;
+}
+
+/* Banda de ahorro: lámina dorada con texto oscuro, como en Accesos Venezia */
+.pase-luxe .lx-savings {
+  margin-top: 16px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  background: var(--lx-gold);
+  color: #1b1407;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(212, 175, 106, 0.18);
+}
+
+/* Talón con perforación y folio */
+.pase-luxe .lx-stub {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px -22px 0;
+  padding: 14px 24px 0;
+  border-top: 1.5px dashed rgba(212, 175, 106, 0.45);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--lx-muted);
+  font-weight: 700;
+  flex-wrap: wrap;
+}
+.pase-luxe .lx-stub::before,
+.pase-luxe .lx-stub::after {
+  content: "";
+  position: absolute;
+  top: -11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #050505;
+  box-shadow: inset 0 0 0 1px rgba(212, 175, 106, 0.5);
+}
+.pase-luxe .lx-stub::before { left: -10px; }
+.pase-luxe .lx-stub::after { right: -10px; }
+.pase-luxe .lx-stub strong {
+  margin-left: 6px;
+  color: var(--lx-ivory);
+  letter-spacing: 2px;
+}
+
+.pase-luxe .lx-footer-note {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--lx-muted);
+}
+
+/* Botón dorado metálico */
+body.pase-luxe .lx-btn {
+  background: var(--lx-gold);
+  color: #1b1407;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 13px;
+  box-shadow: 0 10px 26px rgba(212, 175, 106, 0.22);
+}
+
+body.pase-luxe .micro-note {
+  color: var(--lx-muted);
+}

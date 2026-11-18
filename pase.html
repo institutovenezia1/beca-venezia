@@ -7,17 +7,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css?v=2" />
+    <link rel="stylesheet" href="pase-luxe.css?v=1" />
   </head>
-  <body>
+  <body class="pase-luxe">
     <div class="wrap">
       <div class="brand-header">
-        <div class="brand-mark">V</div>
-        <div class="brand-eyebrow">Instituto de Belleza Venezia</div>
-        <h1 class="brand-title" id="pageTitle">Tu pase de beca</h1>
+        <svg class="lx-crown" viewBox="0 0 64 40" aria-hidden="true">
+          <defs>
+            <linearGradient id="lxGold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8a6a2f" />
+              <stop offset="0.35" stop-color="#f7e7b4" />
+              <stop offset="0.6" stop-color="#c9a05a" />
+              <stop offset="1" stop-color="#f3dc9c" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#lxGold)" d="M4 34 L8 10 L20 22 L32 4 L44 22 L56 10 L60 34 Z" />
+          <rect fill="url(#lxGold)" x="4" y="35" width="56" height="4" rx="1" />
+          <circle fill="#f7e7b4" cx="8" cy="9" r="2.6" />
+          <circle fill="#f7e7b4" cx="32" cy="3.5" r="2.8" />
+          <circle fill="#f7e7b4" cx="56" cy="9" r="2.6" />
+        </svg>
+        <div class="lx-brand">VENEZIA</div>
+        <div class="lx-brand-sub">Instituto de Belleza</div>
+        <p class="lx-page-title" id="pageTitle">Tu pase de beca</p>
       </div>
 
       <div class="card no-print" id="loadingState">
@@ -48,48 +64,66 @@
       </div>
 
       <div id="passState" hidden>
-        <div class="pass-card">
-          <p class="pass-kicker">Pase · Beca Venezia</p>
-          <h2 class="pass-title">¡Felicidades, <span class="accent" id="passNombre">—</span>!</h2>
-          <p class="pass-validity" id="passValidity" hidden></p>
+        <div class="lx-pass">
+          <div class="lx-pass-inner">
+            <span class="lx-corner lx-tl"></span><span class="lx-corner lx-tr"></span>
+            <span class="lx-corner lx-bl"></span><span class="lx-corner lx-br"></span>
 
-          <div class="pass-row">
-            <span class="label">Curso</span>
-            <span class="value" id="passCurso">—</span>
-          </div>
-          <div class="pass-row">
-            <span class="label">Asesora que te atendió</span>
-            <span class="value" id="passAsesora">—</span>
-          </div>
-          <div class="pass-row">
-            <span class="label">Fecha de solicitud</span>
-            <span class="value" id="passFecha">—</span>
-          </div>
+            <p class="lx-kicker">Pase oficial</p>
+            <h2 class="lx-title">Beca Venezia</h2>
+            <div class="lx-divider" aria-hidden="true"><span></span><i></i><span></span></div>
 
-          <div class="pass-amounts">
-            <div class="amount-row">
-              <span class="label">Inscripción con beca</span>
-              <span class="value" id="passInscripcion">$1,149.99</span>
-            </div>
-            <div class="amount-row">
-              <span class="label">Mensualidad con beca</span>
-              <span class="value" id="passMensualidad">$1,599.99</span>
-            </div>
-            <div class="amount-row">
-              <span class="label">Apoyo de material</span>
-              <span class="value" id="passMaterial">80% del material</span>
-            </div>
-          </div>
+            <p class="lx-congrats">¡Felicidades,</p>
+            <p class="lx-name" id="passNombre">—</p>
+            <p class="pass-validity" id="passValidity" hidden></p>
 
-          <p class="pass-footer-note">
-            Este pase es personal e intransferible. Preséntalo (impreso o en tu celular) en
-            Instituto de Belleza Venezia, Tlaxcala, para validar tu beca y completar tu
-            inscripción.
-          </p>
+            <div class="lx-details">
+              <div class="lx-row">
+                <span class="label">Curso</span>
+                <span class="value" id="passCurso">—</span>
+              </div>
+              <div class="lx-row">
+                <span class="label">Asesora que te atendió</span>
+                <span class="value" id="passAsesora">—</span>
+              </div>
+              <div class="lx-row">
+                <span class="label">Fecha de solicitud</span>
+                <span class="value" id="passFecha">—</span>
+              </div>
+            </div>
+
+            <div class="lx-amounts">
+              <p class="lx-amounts-note">Precio regular: Plan Platinum, con los mismos beneficios</p>
+              <div class="lx-amount">
+                <span class="label">Inscripción con beca</span>
+                <span class="value"><s class="lx-old">$2,300</s><span class="lx-price" id="passInscripcion">$1,149.99</span></span>
+              </div>
+              <div class="lx-amount">
+                <span class="label">Mensualidad con beca</span>
+                <span class="value"><s class="lx-old">$1,800</s><span class="lx-price" id="passMensualidad">$1,599.99</span></span>
+              </div>
+              <div class="lx-amount">
+                <span class="label">Apoyo de material</span>
+                <span class="value"><span class="lx-price lx-price-sm" id="passMaterial">80% del material</span></span>
+              </div>
+            </div>
+
+            <div class="lx-savings">Te ahorras más de $2,000 en tu curso</div>
+
+            <div class="lx-stub">
+              <span>Folio <strong id="passFolio">—</strong></span>
+              <span>Personal e intransferible</span>
+            </div>
+
+            <p class="lx-footer-note">
+              Preséntalo (impreso o en tu celular) en Instituto de Belleza Venezia, Tlaxcala,
+              para validar tu beca y completar tu inscripción.
+            </p>
+          </div>
         </div>
 
-        <div class="btn-row no-print" style="margin-top: 18px">
-          <button type="button" class="btn btn-primary" id="downloadBtn">Descargar mi pase</button>
+        <div class="btn-row no-print" style="margin-top: 20px">
+          <button type="button" class="btn btn-primary lx-btn" id="downloadBtn">Descargar mi pase</button>
         </div>
       </div>
 
@@ -102,6 +136,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js?v=1"></script>
     <script src="prospect-record.js?v=2"></script>
-    <script src="pase.js?v=6"></script>
+    <script src="pase.js?v=8"></script>
   </body>
 </html>
