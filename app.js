@@ -75,7 +75,7 @@
     if (stepNumber === 3) {
       var asesorAtendio = form.asesorAtendio.value.trim();
       if (!asesorAtendio) {
-        setError(3, "Selecciona una opción sobre quién te atendió.");
+        setError(3, "Elige la asesora que te está atendiendo. Si no recuerdas su nombre, pregúntale por WhatsApp.");
         return false;
       }
       var apoyoGobiernoChecked = form.querySelector('input[name="apoyoGobierno"]:checked');

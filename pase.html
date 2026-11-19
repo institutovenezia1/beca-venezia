@@ -70,7 +70,7 @@
             <span class="lx-corner lx-bl"></span><span class="lx-corner lx-br"></span>
 
             <p class="lx-kicker">Pase oficial</p>
-            <h2 class="lx-title">Beca Venezia</h2>
+            <h2 class="lx-title" id="passTitle">Beca Venezia</h2>
             <div class="lx-divider" aria-hidden="true"><span></span><i></i><span></span></div>
 
             <p class="lx-congrats">¡Felicidades,</p>
@@ -93,13 +93,13 @@
             </div>
 
             <div class="lx-amounts">
-              <p class="lx-amounts-note">Precio regular: Plan Platinum, con los mismos beneficios</p>
+              <p class="lx-amounts-note" id="passNotaRegular">Precio regular: Plan Platinum, con los mismos beneficios</p>
               <div class="lx-amount">
-                <span class="label">Inscripción con beca</span>
+                <span class="label" id="passInscripcionLabel">Inscripción con beca</span>
                 <span class="value"><s class="lx-old">$2,300</s><span class="lx-price" id="passInscripcion">$1,149.99</span></span>
               </div>
               <div class="lx-amount">
-                <span class="label">Mensualidad con beca</span>
+                <span class="label" id="passMensualidadLabel">Mensualidad con beca</span>
                 <span class="value"><s class="lx-old">$1,800</s><span class="lx-price" id="passMensualidad">$1,599.99</span></span>
               </div>
               <div class="lx-amount">
@@ -108,7 +108,7 @@
               </div>
             </div>
 
-            <div class="lx-savings">Te ahorras más de $2,000 en tu curso</div>
+            <div class="lx-savings" id="passAhorro">Te ahorras más de $2,000 en tu curso</div>
 
             <div class="lx-stub">
               <span>Folio <strong id="passFolio">—</strong></span>
@@ -117,7 +117,7 @@
 
             <p class="lx-footer-note">
               Preséntalo (impreso o en tu celular) en Instituto de Belleza Venezia, Tlaxcala,
-              para validar tu beca y completar tu inscripción.
+              para validar tu <span id="passTipoFooter">beca</span> y completar tu inscripción.
             </p>
           </div>
         </div>
@@ -135,7 +135,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js?v=1"></script>
-    <script src="prospect-record.js?v=2"></script>
-    <script src="pase.js?v=8"></script>
+    <script src="prospect-record.js?v=3"></script>
+    <script src="pase.js?v=9"></script>
   </body>
 </html>

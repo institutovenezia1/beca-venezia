@@ -43,6 +43,34 @@
   // consultar Supabase.
   var currentPassData = null;
 
+  var PLAN_BECA = {
+    titulo: "Beca Venezia",
+    tipoLabel: "beca",
+    inscripcion: "$1,149.99",
+    mensualidad: "$1,599.99",
+    material: "80% del material",
+    ahorro: "Te ahorras más de $2,000 en tu curso",
+    notaRegular: "Precio regular: Plan Platinum, con los mismos beneficios",
+  };
+  // Ahorro con descuento: $800 de inscripción + $200 por mensualidad
+  // (5 mensualidades = $1,800 · 6 en barbería = $2,000).
+  var PLAN_DESCUENTO = {
+    titulo: "Descuento Venezia",
+    tipoLabel: "descuento",
+    inscripcion: "$1,500",
+    mensualidad: "$1,600",
+    material: "50% del material",
+    ahorro: "Te ahorras más de $1,500 en tu curso",
+    notaRegular: "Precio regular: Plan Platinum",
+  };
+
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.textContent = value;
+    }
+  }
+
   // El pase es válido solo por 48 horas a partir de la confirmación real
   // (petición del CEO, 29/oct/2026; ampliado de 24 a 48 horas el 14/nov/2026): que no se presenten semanas o meses
   // después esperando que la beca siga en pie. El timestamp "Confirmada el"
@@ -112,7 +140,22 @@
     // Folio corto para identificar el pase en recepción (sale del id de la
     // solicitud, no se inventa nada).
     var folio = "BV-" + String(record.id || "").replace(/[^a-z0-9]/gi, "").slice(0, 6).toUpperCase();
+    // Beca o descuento (cupo de 12 becas, petición del CEO, 19/nov/2026):
+    // el CRM guarda "Apoyo aprobado: Beca" o "Apoyo aprobado: Descuento" al
+    // mandar la confirmación. Las confirmadas antes de eso no lo traen y
+    // siguen siendo beca.
+    var apoyo = String(Prospect.extractMetadata(notes, "Apoyo aprobado") || "").trim().toLowerCase();
+    var plan = apoyo === "descuento" ? PLAN_DESCUENTO : PLAN_BECA;
     document.getElementById("passNombre").textContent = nombre + "!";
+    setText("passTitle", plan.titulo);
+    setText("passInscripcion", plan.inscripcion);
+    setText("passMensualidad", plan.mensualidad);
+    setText("passMaterial", plan.material);
+    setText("passInscripcionLabel", "Inscripción con " + plan.tipoLabel);
+    setText("passMensualidadLabel", "Mensualidad con " + plan.tipoLabel);
+    setText("passAhorro", plan.ahorro);
+    setText("passNotaRegular", plan.notaRegular);
+    setText("passTipoFooter", plan.tipoLabel);
     var folioEl = document.getElementById("passFolio");
     if (folioEl) {
       folioEl.textContent = folio;
@@ -120,7 +163,7 @@
     document.getElementById("passCurso").textContent = curso;
     document.getElementById("passAsesora").textContent = asesoraLabel;
     document.getElementById("passFecha").textContent = fecha;
-    document.getElementById("pageTitle").textContent = "Tu pase de Beca Venezia";
+    document.getElementById("pageTitle").textContent = "Tu pase de " + plan.titulo;
 
     var validityEl = document.getElementById("passValidity");
     if (validityEl) {
@@ -144,16 +187,18 @@
       curso: curso,
       asesora: asesoraLabel,
       fecha: fecha,
-      inscripcion: "$1,149.99",
-      mensualidad: "$1,599.99",
-      material: "80% del material",
+      inscripcion: plan.inscripcion,
+      mensualidad: plan.mensualidad,
+      material: plan.material,
+      titulo: plan.titulo,
+      tipoLabel: plan.tipoLabel,
       // Precio regular de comparación = Plan Platinum (mismos beneficios:
       // 80% de material). Petición del CEO, 18/nov/2026: que la alumna vea
       // cuánto se ahorra con la beca en vez de solo la cifra final.
       inscripcionRegular: "$2,300",
       mensualidadRegular: "$1,800",
-      ahorro: "Te ahorras más de $2,000 en tu curso",
-      notaRegular: "Precio regular: Plan Platinum, con los mismos beneficios",
+      ahorro: plan.ahorro,
+      notaRegular: plan.notaRegular,
       folio: folio,
       validity: validity,
     };
@@ -374,7 +419,7 @@
       ctx.font = "700 74px " + LX_SERIF;
       lxSpacing(ctx, 5);
       ctx.fillStyle = lxGold(ctx, cx - 330, y, cx + 330, y + 80);
-      ctx.fillText("BECA VENEZIA", cx + 2, y + 82);
+      ctx.fillText(String(data.titulo || "Beca Venezia").toUpperCase(), cx + 2, y + 82);
       lxSpacing(ctx, 0);
     }
     y += 82;
@@ -500,8 +545,8 @@
       ctx.fillText(String(data.notaRegular || ""), cx, panelY + 50);
 
       var amounts = [
-        ["INSCRIPCIÓN CON BECA", data.inscripcion, data.inscripcionRegular, 46],
-        ["MENSUALIDAD CON BECA", data.mensualidad, data.mensualidadRegular, 46],
+        ["INSCRIPCIÓN CON " + String(data.tipoLabel || "beca").toUpperCase(), data.inscripcion, data.inscripcionRegular, 46],
+        ["MENSUALIDAD CON " + String(data.tipoLabel || "beca").toUpperCase(), data.mensualidad, data.mensualidadRegular, 46],
         ["APOYO DE MATERIAL", data.material, "", 34],
       ];
       var ay = panelY + 120;
@@ -594,7 +639,7 @@
     var footerLines = wrapText(
       ctx,
       "Preséntalo (impreso o en tu celular) en Instituto de Belleza Venezia, Tlaxcala, " +
-        "para validar tu beca y completar tu inscripción.",
+        "para validar tu " + String(data.tipoLabel || "beca") + " y completar tu inscripción.",
       width - 240
     );
     y += 22;

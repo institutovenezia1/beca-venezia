@@ -82,6 +82,13 @@
       // nombre poner en "Asesora asignada" dentro del CRM; no se asigna
       // automáticamente (petición del CEO, 29/oct/2026).
       fields.asesorAtendio ? `Asesora que te atendió (según la solicitante): ${encodeAdvisorValue(fields.asesorAtendio)}` : "",
+      // Desde el 19/nov/2026 (petición del CEO) la asesora que elige la
+      // solicitante queda ASIGNADA en el CRM de una vez, para que todo el
+      // equipo sepa quién la atiende y nadie más le escriba. Ya no existe la
+      // opción "No lo sé": el link de la beca siempre lo manda una asesora.
+      fields.asesorAtendio && fields.asesorAtendio.indexOf("No lo sé") !== 0
+        ? `Asesora asignada: ${encodeAdvisorValue(fields.asesorAtendio)}`
+        : "",
       fields.apoyoGobierno ? `Recibe apoyo del gobierno: ${fields.apoyoGobierno}` : "",
       fields.ocupacion ? `Ocupación: ${fields.ocupacion}` : "",
       fields.edad ? `Edad: ${fields.edad}` : "",
